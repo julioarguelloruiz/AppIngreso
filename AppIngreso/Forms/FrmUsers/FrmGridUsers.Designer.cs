@@ -44,7 +44,7 @@ namespace AppIngreso
             this.txtId = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgGeneral = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.tsbRefrescar = new System.Windows.Forms.ToolStripButton();
             this.tsGeneral.SuspendLayout();
             this.pnlMantUser.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -59,6 +59,7 @@ namespace AppIngreso
             this.tsbInsertar,
             this.tsbModificar,
             this.tsbEliminar,
+            this.tsbRefrescar,
             this.Pagos,
             this.tsbSeparador,
             this.tsbCerrar});
@@ -136,13 +137,12 @@ namespace AppIngreso
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Location = new System.Drawing.Point(6, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(625, 90);
+            this.groupBox1.Size = new System.Drawing.Size(516, 90);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar";
@@ -152,9 +152,9 @@ namespace AppIngreso
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(19, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 13);
+            this.label1.Size = new System.Drawing.Size(144, 13);
             this.label1.TabIndex = 22;
-            this.label1.Text = "Ingrese el número de céula:";
+            this.label1.Text = "Ingrese el número de cédula:";
             // 
             // button2
             // 
@@ -172,6 +172,7 @@ namespace AppIngreso
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(248, 20);
             this.txtId.TabIndex = 16;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // panel2
             // 
@@ -195,15 +196,15 @@ namespace AppIngreso
             this.dgGeneral.TabIndex = 0;
             this.dgGeneral.TabStop = false;
             // 
-            // button3
+            // tsbRefrescar
             // 
-            this.button3.Location = new System.Drawing.Point(498, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Refrescar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.tsbRefrescar.Image = ((System.Drawing.Image)(resources.GetObject("tsbRefrescar.Image")));
+            this.tsbRefrescar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRefrescar.Name = "tsbRefrescar";
+            this.tsbRefrescar.Size = new System.Drawing.Size(59, 39);
+            this.tsbRefrescar.Text = "&Refrescar";
+            this.tsbRefrescar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbRefrescar.Click += new System.EventHandler(this.tsbRefrescar_Click);
             // 
             // frmGridUsers
             // 
@@ -248,7 +249,7 @@ namespace AppIngreso
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripButton tsbRefrescar;
     }
 }
 

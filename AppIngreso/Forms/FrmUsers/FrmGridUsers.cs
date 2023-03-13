@@ -21,11 +21,16 @@ namespace AppIngreso
             InitializeComponent();
         }
 
+        private void frmGridUsers_Load(object sender, EventArgs e)
+        {
+            ShowData();
+        }
+
         private void tsbInsertar_Click(object sender, EventArgs e)
         {
-             FrmMantUsers frm = new FrmMantUsers();
-             frm.Accion = "Insertar";
-             frm.ShowDialog();
+            FrmMantUsers frm = new FrmMantUsers();
+            frm.Accion = "Insertar";
+            frm.ShowDialog();
         }
 
         private void tsbModificar_Click(object sender, EventArgs e)
@@ -37,24 +42,21 @@ namespace AppIngreso
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Users us = new Users();
-                us.Accion = "Eliminar";
-                us.Delete(txtId.Text);
-                MessageBox.Show("Usuario eliminado");
-                actualizar();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Error");
-            }
+            Users us = new Users();
+            us.Accion = "Eliminar";
+            us.Delete(txtId.Text);
+            MessageBox.Show("Usuario eliminado");
+            actualizar();
         }
 
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tsbRefrescar_Click(object sender, EventArgs e)
+        {
+            actualizar();
         }
 
         public void actualizar()
@@ -88,15 +90,20 @@ namespace AppIngreso
 
         }
 
-        private void frmGridUsers_Load(object sender, EventArgs e)
-        {
-            ShowData();
-        }
-
         public void ShowData()
         {
             Users us = new Users();
             var dt = us.Select();
+            dt.Columns.Add("Id").Caption = "Identificación";
+            //dt.Columns.Add("Cédula").ColumnName = "Cedula";
+            //dt.Columns.Add("Primer Nombre").ColumnName = "Nombre";
+            //dt.Columns.Add("Segundo Nombre").ColumnName = "Nombre2";
+            //dt.Columns.Add("Primer Apellido").ColumnName = "Apellido";
+            //dt.Columns.Add("Segundo Apellido").ColumnName = "Apellido2";
+            //dt.Columns.Add("Correo").ColumnName = "Correo";
+            //dt.Columns.Add("Fecha Nacimiento").ColumnName = "FechaNacimiento";
+            //dt.Columns.Add("Fecha Inicio").ColumnName = "Fecha Inicio";
+            //dt.Columns.Add("Estado").ColumnName = "Estado";
             this.dgGeneral.DataSource = dt;
         }
 
@@ -108,17 +115,12 @@ namespace AppIngreso
             this.dgGeneral.DataSource = dt;
         }
 
-        //Eliminar
-        private void button1_Click_2(object sender, EventArgs e)
+        private void txtId_TextChanged(object sender, EventArgs e)
         {
-            Users us = new Users();
-            var dt = us.Select(txtId.Text);
-            this.dgGeneral.DataSource = dt;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            actualizar();
+            if (txtId.Text == "")
+            {
+                actualizar();
+            }
         }
     }
 }
